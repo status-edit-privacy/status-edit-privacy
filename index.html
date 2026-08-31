@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Status Edit — Privacy & Licenses</title>
+<style>
+:root{color-scheme:dark;background:#0e0e0f;color:#f4f4f4;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body{margin:0;background:linear-gradient(#050505,#111113);line-height:1.6}
+main{max-width:820px;margin:auto;padding:44px 20px 70px}
+.brand{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+.mark{width:42px;height:42px;border-radius:12px;background:#ffd114;display:grid;place-items:center;color:#111;font-weight:900}
+h1{font-size:32px;margin:0}.sub{color:#aaa;margin-top:4px}
+.card{background:#171719;border:1px solid #29292d;border-radius:18px;padding:22px;margin:18px 0}
+h2{font-size:18px;color:#ffe052;margin:0 0 8px} p{margin:8px 0}
+.lang{display:flex;gap:8px;margin:20px 0}.lang button{border:1px solid #3a3a3e;background:#1c1c1f;color:#eee;border-radius:10px;padding:8px 14px;cursor:pointer}
+.lang button.active{background:#ffd114;color:#111;border-color:#ffd114;font-weight:700}
+[dir=rtl]{text-align:right}.muted{color:#9b9b9f;font-size:13px} a{color:#ffe052} details{margin-top:12px} summary{cursor:pointer;color:#ffe052;font-weight:700}
+</style>
+<script>
+function setLang(l){
+ document.getElementById('en').hidden=l!=='en'; document.getElementById('he').hidden=l!=='he';
+ document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
+ document.documentElement.lang=l;
+}
+</script>
+</head>
+<body onload="setLang('en')">
+<main>
+<div class="brand"><div class="mark">S</div><div><h1>Status Edit</h1><div class="sub">Privacy & Licenses</div></div></div>
+<div class="lang"><button data-lang="en" onclick="setLang('en')">English</button><button data-lang="he" onclick="setLang('he')">עברית</button></div>
+
+<section id="en">
+<div class="card"><h2>Privacy Policy</h2><p class="muted">Last updated: August 30, 2026</p><p>Status Edit is designed to edit video and audio on your device.</p></div>
+<div class="card"><h2>Media</h2><p>Videos, audio recordings, extracted camera audio, AI stems, previews, and exported files are processed locally on the device. Status Edit does not upload your media to a Status Edit server.</p></div>
+<div class="card"><h2>Photos and Files</h2><p>The app accesses only the videos or audio files you choose and, when you request it, saves the finished video to your Photos library. These permissions are used only to provide the editing and export features you select.</p></div>
+<div class="card"><h2>AI Vocal Separation</h2><p>Vocal/music separation runs on-device. The AI vocal-separation model is bundled with Status Edit and runs on-device. Your media is not sent to a model hosting provider for AI separation.</p></div>
+<div class="card"><h2>Data Collection</h2><p>Status Edit does not require an account and does not include advertising or analytics SDKs. Status Edit does not intentionally collect, sell, or use your personal media for tracking or advertising.</p></div>
+<div class="card"><h2>Local Temporary Files</h2><p>The app may create temporary local files while importing, previewing, separating audio, or exporting. These files are used to perform the requested operation on your device.</p></div>
+<div class="card"><h2>Third-Party Services</h2><p>If you use the iOS Share Sheet to send an exported file to another app or service, that destination's privacy practices apply after you choose to share.</p></div>
+<div class="card"><h2>Retention, Consent and Deletion</h2><p>Status Edit does not maintain a user account or a Status Edit server containing your media. You control access to Photos through iOS Settings and can revoke that permission at any time. Files you save to Photos or share to another destination can be deleted or managed through those destinations.</p></div>
+<div class="card"><h2>Open Source & Model Licenses</h2><p><strong>MDX23C InstVoc HQ (Core ML)</strong> — on-device vocal/instrumental separation.</p><p>Credits: MDX23C architecture and weights — ZFTurbo; TFC-TDF / MDX architecture — KUIELab and contributors; Ultimate Vocal Remover (UVR) — Anjok07 and UVR contributors; Core ML conversion/package — NubeAudio / huggingsounds.</p><p>The Core ML package is distributed under the MIT License. UVR asks third-party developers using its models to honor the MIT license and credit UVR and its developers.</p><details><summary>MIT License</summary><p class="muted">Copyright (c) 2022 Ultimate Vocal Remover</p><p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &quot;Software&quot;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p><p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p><p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p></details></div>
+<div class="card"><h2>Changes</h2><p>This policy may be updated if the app's features or data practices change.</p></div>
+</section>
+
+<section id="he" dir="rtl" hidden>
+<div class="card"><h2>מדיניות פרטיות</h2><p class="muted">עודכן לאחרונה: 30 באוגוסט 2026</p><p>Status Edit נועדה לעריכת וידאו ואודיו ישירות במכשיר שלך.</p></div>
+<div class="card"><h2>מדיה</h2><p>סרטונים, הקלטות אודיו, האודיו שמחולץ מהסרטון, ערוצי AI, תצוגות מקדימות וקבצי ייצוא מעובדים מקומית במכשיר. Status Edit אינה מעלה את המדיה שלך לשרת של Status Edit.</p></div>
+<div class="card"><h2>תמונות וקבצים</h2><p>האפליקציה ניגשת רק לסרטונים או לקבצי האודיו שאתה בוחר, וכאשר אתה מבקש זאת — שומרת את הסרטון הסופי בספריית התמונות. ההרשאות משמשות רק לפעולות העריכה והייצוא שבחרת.</p></div>
+<div class="card"><h2>הפרדת שירה ומוזיקה באמצעות AI</h2><p>ההפרדה מתבצעת במכשיר. מודל הפרדת השירה באמצעות AI כלול ב־Status Edit ופועל מקומית במכשיר. המדיה שלך אינה נשלחת לספק אחסון של מודלים לצורך ההפרדה.</p></div>
+<div class="card"><h2>איסוף מידע</h2><p>Status Edit אינה דורשת חשבון משתמש ואינה כוללת פרסומות או ערכות Analytics. האפליקציה אינה אוספת בכוונה את המדיה האישית שלך, אינה מוכרת אותה ואינה משתמשת בה לצורכי מעקב או פרסום.</p></div>
+<div class="card"><h2>קבצים זמניים</h2><p>האפליקציה עשויה ליצור קבצים זמניים מקומיים בזמן ייבוא, תצוגה מקדימה, הפרדת אודיו או ייצוא. הם משמשים לביצוע הפעולה שביקשת במכשיר.</p></div>
+<div class="card"><h2>שירותי צד שלישי</h2><p>אם תבחר להשתמש בתפריט השיתוף של iOS כדי לשלוח קובץ לאפליקציה או לשירות אחר, מדיניות הפרטיות של אותו יעד תחול לאחר שבחרת לשתף.</p></div>
+<div class="card"><h2>שמירת מידע, הסכמה ומחיקה</h2><p>Status Edit אינה מנהלת חשבון משתמש או שרת של Status Edit שבו נשמרת המדיה שלך. ניתן לבטל בכל עת את הרשאת הגישה לתמונות דרך הגדרות iOS. קבצים ששמרת בספריית התמונות או ששיתפת ליעד אחר ניתנים למחיקה ולניהול דרך אותו יעד.</p></div>
+<div class="card"><h2>רישיונות קוד פתוח ומודלים</h2><p><strong>MDX23C InstVoc HQ (Core ML)</strong> — הפרדת שירה ופלייבק מקומית במכשיר.</p><p>קרדיטים: ארכיטקטורת ומשקולות MDX23C — ‏ZFTurbo; ארכיטקטורת TFC-TDF / MDX — ‏KUIELab ותורמים; Ultimate Vocal Remover ‏(UVR) — ‏Anjok07 ותורמי UVR; המרת/אריזת Core ML — ‏NubeAudio / huggingsounds.</p><p>חבילת Core ML מופצת תחת רישיון MIT. פרויקט UVR מבקש ממפתחי צד שלישי המשתמשים במודלים שלו לכבד את רישיון MIT ולתת קרדיט ל־UVR ולמפתחים שלו.</p><details><summary>MIT License</summary><p class="muted">Copyright (c) 2022 Ultimate Vocal Remover</p><p dir="ltr">Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &quot;Software&quot;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p><p dir="ltr">The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p><p dir="ltr">THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p></details></div>
+<div class="card"><h2>שינויים</h2><p>מדיניות זו עשויה להתעדכן אם תכונות האפליקציה או אופן הטיפול במידע ישתנו.</p></div>
+</section>
+<p class="muted">© 2026 Yehuda Hershenbaum. All rights reserved.</p>
+</main>
+</body>
+</html>
