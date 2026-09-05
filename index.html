@@ -1,62 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Status Edit — iPhone video and audio preparation, sync, AI vocal balance, and WhatsApp delivery.">
+<title>Status Edit — Prepare. Sync. Share.</title>
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#070708;
+  --panel:#141416;
+  --panel2:#1a1a1d;
+  --text:#f5f5f5;
+  --muted:#aaaab0;
+  --line:#2b2b30;
+  --accent:#ffd400;
+  --accent2:#ffe76a;
+  --max:960px;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Arial,sans-serif
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:
+  radial-gradient(circle at 80% -10%,rgba(255,212,0,.10),transparent 32rem),
+  linear-gradient(180deg,#050506 0%,#0b0b0d 100%);
+  color:var(--text);line-height:1.65}
+a{color:var(--accent2)}
+.wrap{max-width:var(--max);margin:auto;padding:28px 20px 72px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:48px}
+.brand{display:flex;align-items:center;gap:13px}
+.logo{width:52px;height:52px;flex:none}
+.brandname{font-weight:800;font-size:20px;letter-spacing:-.02em}
+.brandmeta{color:var(--muted);font-size:13px}
+.lang{display:flex;gap:8px}
+.lang button{appearance:none;border:1px solid var(--line);background:#111114;color:#eee;border-radius:999px;padding:8px 13px;cursor:pointer;font-weight:600}
+.lang button.active{background:var(--accent);color:#080808;border-color:var(--accent)}
+.hero{padding:26px 0 24px}
+.eyebrow{color:var(--accent);font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:12px}
+h1{font-size:clamp(42px,8vw,72px);line-height:1.02;letter-spacing:-.055em;margin:12px 0 16px;max-width:780px}
+.lead{font-size:clamp(18px,2.5vw,24px);color:#c6c6ca;max-width:760px;margin:0}
+.pills{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 8px}
+.pill{border:1px solid var(--line);background:#101012;border-radius:999px;padding:8px 12px;color:#d8d8dc;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:34px 0}
+.card{background:linear-gradient(180deg,#171719,#131315);border:1px solid var(--line);border-radius:20px;padding:22px}
+.card h2,.card h3{margin:0 0 8px;letter-spacing:-.02em}
+.card h2{font-size:22px;color:var(--accent2)}
+.card h3{font-size:17px;color:#fff}
+.card p{margin:8px 0}
+.muted{color:var(--muted);font-size:14px}
+.section-title{margin:58px 0 16px;font-size:30px;letter-spacing:-.035em}
+.notice{border-left:3px solid var(--accent);padding:14px 16px;background:#131314;border-radius:0 14px 14px 0;margin:18px 0}
+[dir=rtl] .notice{border-left:1px solid var(--line);border-right:3px solid var(--accent);border-radius:14px 0 0 14px}
+details{margin-top:14px;border-top:1px solid var(--line);padding-top:14px}
+summary{cursor:pointer;color:var(--accent2);font-weight:750}
+footer{border-top:1px solid var(--line);margin-top:54px;padding-top:24px;color:var(--muted);font-size:13px}
+.kicker{display:inline-flex;align-items:center;gap:8px;background:#141416;border:1px solid var(--line);border-radius:999px;padding:7px 11px;color:#ddd;margin-top:12px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+ul{padding-inline-start:22px}
+li{margin:6px 0}
+@media(max-width:760px){
+ .grid{grid-template-columns:1fr}
+ .topbar{align-items:flex-start}
+ h1{font-size:48px}
+}
+</style>
+<script>
+function setLang(l){
+  document.getElementById('en').hidden=l!=='en';
+  document.getElementById('he').hidden=l!=='he';
+  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
+  document.documentElement.lang=l;
+  localStorage.setItem('statusEditLang',l);
+}
+window.addEventListener('DOMContentLoaded',()=>setLang(localStorage.getItem('statusEditLang')||'en'));
+</script>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <div class="brand">
+      <svg class="logo" viewBox="0 0 100 100" aria-label="Status Edit logo">
+        <rect x="3" y="3" width="94" height="94" rx="24" fill="#0b0b0c" stroke="#252529" stroke-width="3"/>
+        <path d="M39 24 A31 31 0 1 1 39 76" fill="none" stroke="#ffd400" stroke-width="8" stroke-linecap="round"/>
+        <path d="M45 35 L45 65 L70 50 Z" fill="#ffd400" stroke="#ffd400" stroke-width="4" stroke-linejoin="round"/>
+        <path d="M17 39 H34 M12 50 H34 M17 61 H34" fill="none" stroke="#ffd400" stroke-width="7" stroke-linecap="round"/>
+      </svg>
+      <div><div class="brandname">Status Edit</div><div class="brandmeta">Prepare. Sync. Share.</div></div>
+    </div>
+    <div class="lang">
+      <button data-lang="en" onclick="setLang('en')">English</button>
+      <button data-lang="he" onclick="setLang('he')">עברית</button>
+    </div>
+  </div>
 
-Status Edit
-Prepare. Sync. Share.
-English
-עברית
-IPHONE VIDEO WORKFLOW
-Get the clip ready. Keep the moment.
-Status Edit is an iPhone app for preparing video and audio quickly: choose a clip, sync external audio, refine the sound, preview the result, export, and—when you choose—send the finished MP4 through the official Status Edit WhatsApp delivery flow.
-Fast video preparation
-External-audio sync
-On-device AI vocal balance
-WhatsApp delivery
+  <section id="en">
+    <div class="hero">
+      <div class="eyebrow">iPhone video workflow</div>
+      <h1>Get the clip ready. Keep the moment.</h1>
+      <p class="lead">Status Edit is an iPhone app for preparing video and audio quickly: choose a clip, sync external audio, refine the sound, preview the result, export, and—when you choose—send the finished MP4 through the official Status Edit WhatsApp delivery flow.</p>
+      <div class="pills">
+        <span class="pill">Fast video preparation</span>
+        <span class="pill">External-audio sync</span>
+        <span class="pill">On-device AI vocal balance</span>
+        <span class="pill">WhatsApp delivery</span>
+      </div>
+      <div class="kicker"><span class="dot"></span> Operated by Yehuda Hershenbaum</div>
+    </div>
 
-Operated by Yehuda Hershenbaum
-Sync
-Match a selected video to a longer external recording and keep the edit aligned without manually hunting through the full recording.
-Shape the sound
-Preview and adjust the audio workflow, including on-device vocal/music separation where you choose to use it.
-Send
-Export the final MP4, save it to Photos, use the iOS Share Sheet, or send it through the Status Edit WhatsApp delivery service.
-Privacy Policy
-Summary
-Last updated: September 6, 2026
-Most editing work happens on your device. Status Edit does not require a user account and does not include advertising or analytics SDKs. Network processing is used when you explicitly connect or use the WhatsApp delivery feature.
-Media processing
-Video/audio editing, synchronization, previews, local temporary files, and AI vocal separation are processed on the device. The AI vocal-separation model is bundled with Status Edit, and media analyzed for vocal separation is not sent to a model-hosting provider.
-Important change: if you choose Send to WhatsApp, the finished exported MP4 is uploaded to Status Edit delivery infrastructure so it can be delivered through WhatsApp. This is the only normal Status Edit workflow in which the finished media is intentionally uploaded to Status Edit server infrastructure.
-WhatsApp connection and delivery
-To connect WhatsApp, Status Edit creates a device-specific installation identifier and receives a device token from the Status Edit backend. When you send the one-time CONNECT message from WhatsApp, the backend associates that token with the WhatsApp phone number that sent the message.
-For delivery, the final MP4 is uploaded through Status Edit's backend and object-storage infrastructure, then sent using Twilio and the WhatsApp Business Platform. Cloudflare is used for backend hosting/storage, Twilio is used for messaging delivery, and Meta/WhatsApp operates the WhatsApp platform.
-These services may process information required to perform delivery, including the WhatsApp phone number, message/delivery metadata, the media or media URL needed for delivery, IP/network information, and technical request logs.
-What Status Edit stores
-Status Edit does not maintain a traditional user account. To keep a WhatsApp connection working, the backend may store a device token, the linked WhatsApp phone number, connection timestamps, and recent inbound-message timing needed for WhatsApp delivery rules.
-Finished MP4 files uploaded for WhatsApp delivery are intended as temporary delivery files. They may remain in server-side object storage until removed by automated retention rules or administrative cleanup. They are not uploaded for advertising, profiling, or AI training.
-Photos, files and local storage
-The app accesses only the photos/videos or audio files you select, subject to iOS permissions. When you request it, Status Edit can save a finished export to your Photos library. The app may create temporary local files while importing, previewing, separating audio, synchronizing, or exporting.
-Data collection and use
-Status Edit does not include advertising or analytics SDKs and does not intentionally sell personal information or use personal media for targeted advertising or tracking. Backend data is used to provide connection, delivery, reliability, abuse prevention, and operational troubleshooting for the features you choose to use.
-Third-party services
-	•	Cloudflare — backend execution and temporary/object storage used by the WhatsApp delivery system.
-	•	Twilio — WhatsApp messaging transport and delivery infrastructure.
-	•	Meta / WhatsApp — WhatsApp Business Platform and end-user messaging service.
-	•	Apple / iOS Share Sheet — if you manually share to another app or service, that destination's privacy practices apply after you choose to share.
-Your choices and deletion
-You control Photos access through iOS Settings and can stop using the WhatsApp delivery feature at any time. Files saved to Photos or shared to another destination are managed through those destinations. WhatsApp connection data and temporary delivery media are handled under the Status Edit backend retention and operational policies.
-Business information
-Status Edit is operated by Yehuda Hershenbaum.
-Official website: status-edit-privacy.github.io/status-edit-privacy/
-Official WhatsApp sender: +1 812-408-8949
-Open Source & Model Licenses
-MDX23C InstVoc HQ (Core ML)
-On-device vocal/instrumental separation model.
-Credits: MDX23C architecture and weights — ZFTurbo; TFC-TDF / MDX architecture — KUIELab and contributors; Ultimate Vocal Remover (UVR) — Anjok07 and UVR contributors; Core ML conversion/package — NubeAudio / huggingsounds.
-The Core ML package is distributed under the MIT License. UVR asks third-party developers using its models to honor the MIT license and credit UVR and its developers.
-MIT License
-Copyright (c) 2022 Ultimate Vocal Remover
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-Changes
-This policy may be updated as Status Edit's features, delivery architecture, third-party services, or data practices change.
-© 2026 Yehuda Hershenbaum. All rights reserved.
+    <div class="grid">
+      <div class="card"><h3>Sync</h3><p>Match a selected video to a longer external recording and keep the edit aligned without manually hunting through the full recording.</p></div>
+      <div class="card"><h3>Shape the sound</h3><p>Preview and adjust the audio workflow, including on-device vocal/music separation where you choose to use it.</p></div>
+      <div class="card"><h3>Send</h3><p>Export the final MP4, save it to Photos, use the iOS Share Sheet, or send it through the Status Edit WhatsApp delivery service.</p></div>
+    </div>
+
+    <h2 class="section-title">Privacy Policy</h2>
+    <div class="card">
+      <h2>Summary</h2>
+      <p class="muted">Last updated: September 6, 2026</p>
+      <p>Most editing work happens on your device. Status Edit does not require a user account and does not include advertising or analytics SDKs. Network processing is used when you explicitly connect or use the WhatsApp delivery feature.</p>
+    </div>
+
+    <div class="card">
+      <h2>Media processing</h2>
+      <p>Video/audio editing, synchronization, previews, local temporary files, and AI vocal separation are processed on the device. The AI vocal-separation model is bundled with Status Edit, and media analyzed for vocal separation is not sent to a model-hosting provider.</p>
+      <div class="notice"><strong>Important change:</strong> if you choose <em>Send to WhatsApp</em>, the finished exported MP4 is uploaded to Status Edit delivery infrastructure so it can be delivered through WhatsApp. This is the only normal Status Edit workflow in which the finished media is intentionally uploaded to Status Edit server infrastructure.</div>
+    </div>
+
+    <div class="card">
+      <h2>WhatsApp connection and delivery</h2>
+      <p>To connect WhatsApp, Status Edit creates a device-specific installation identifier and receives a device token from the Status Edit backend. When you send the one-time CONNECT message from WhatsApp, the backend associates that token with the WhatsApp phone number that sent the message.</p>
+      <p>For delivery, the final MP4 is uploaded through Status Edit's backend and object-storage infrastructure, then sent using Twilio and the WhatsApp Business Platform. Cloudflare is used for backend hosting/storage, Twilio is used for messaging delivery, and Meta/WhatsApp operates the WhatsApp platform.</p>
+      <p>These services may process information required to perform delivery, including the WhatsApp phone number, message/delivery metadata, the media or media URL needed for delivery, IP/network information, and technical request logs.</p>
+    </div>
+
+    <div class="card">
+      <h2>What Status Edit stores</h2>
+      <p>Status Edit does not maintain a traditional user account. To keep a WhatsApp connection working, the backend may store a device token, the linked WhatsApp phone number, connection timestamps, and recent inbound-message timing needed for WhatsApp delivery rules.</p>
+      <p>Finished MP4 files uploaded for WhatsApp delivery are intended as temporary delivery files. They may remain in server-side object storage until removed by automated retention rules or administrative cleanup. They are not uploaded for advertising, profiling, or AI training.</p>
+    </div>
+
+    <div class="card">
+      <h2>Photos, files and local storage</h2>
+      <p>The app accesses only the photos/videos or audio files you select, subject to iOS permissions. When you request it, Status Edit can save a finished export to your Photos library. The app may create temporary local files while importing, previewing, separating audio, synchronizing, or exporting.</p>
+    </div>
+
+    <div class="card">
+      <h2>Data collection and use</h2>
+      <p>Status Edit does not include advertising or analytics SDKs and does not intentionally sell personal information or use personal media for targeted advertising or tracking. Backend data is used to provide connection, delivery, reliability, abuse prevention, and operational troubleshooting for the features you choose to use.</p>
+    </div>
+
+    <div class="card">
+      <h2>Third-party services</h2>
+      <ul>
+        <li><strong>Cloudflare</strong> — backend execution and temporary/object storage used by the WhatsApp delivery system.</li>
+        <li><strong>Twilio</strong> — WhatsApp messaging transport and delivery infrastructure.</li>
+        <li><strong>Meta / WhatsApp</strong> — WhatsApp Business Platform and end-user messaging service.</li>
+        <li><strong>Apple / iOS Share Sheet</strong> — if you manually share to another app or service, that destination's privacy practices apply after you choose to share.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Your choices and deletion</h2>
+      <p>You control Photos access through iOS Settings and can stop using the WhatsApp delivery feature at any time. Files saved to Photos or shared to another destination are managed through those destinations. WhatsApp connection data and temporary delivery media are handled under the Status Edit backend retention and operational policies.</p>
+    </div>
+
+    <div class="card">
+      <h2>Business information</h2>
+      <p><strong>Status Edit</strong> is operated by <strong>Yehuda Hershenbaum</strong>.</p>
+      <p>Official website: <a href="https://status-edit-privacy.github.io/status-edit-privacy/">status-edit-privacy.github.io/status-edit-privacy/</a></p>
+      <p>Official WhatsApp sender: <strong>+1 812-408-8949</strong></p>
+    </div>
+
+    <h2 class="section-title">Open Source & Model Licenses</h2>
+    <div class="card">
+      <h2>MDX23C InstVoc HQ (Core ML)</h2>
+      <p>On-device vocal/instrumental separation model.</p>
+      <p>Credits: MDX23C architecture and weights — ZFTurbo; TFC-TDF / MDX architecture — KUIELab and contributors; Ultimate Vocal Remover (UVR) — Anjok07 and UVR contributors; Core ML conversion/package — NubeAudio / huggingsounds.</p>
+      <p>The Core ML package is distributed under the MIT License. UVR asks third-party developers using its models to honor the MIT license and credit UVR and its developers.</p>
+      <details>
+        <summary>MIT License</summary>
+        <p class="muted">Copyright (c) 2022 Ultimate Vocal Remover</p>
+        <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+        <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+        <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+      </details>
+    </div>
+
+    <div class="card"><h2>Changes</h2><p>This policy may be updated as Status Edit's features, delivery architecture, third-party services, or data practices change.</p></div>
+  </section>
+
+  <section id="he" dir="rtl" hidden>
+    <div class="hero">
+      <div class="eyebrow">תהליך עבודה לווידאו באייפון</div>
+      <h1>מכינים את הקליפ. שומרים את הרגע.</h1>
+      <p class="lead">Status Edit היא אפליקציית iPhone להכנה מהירה של וידאו ואודיו: בוחרים קליפ, מסנכרנים הקלטת אודיו חיצונית, מעבדים את הסאונד, צופים בתוצאה, מייצאים — ואם בוחרים בכך — שולחים את קובץ ה־MP4 הסופי דרך מערכת השליחה הרשמית של Status Edit ל־WhatsApp.</p>
+      <div class="pills">
+        <span class="pill">הכנת וידאו מהירה</span>
+        <span class="pill">סנכרון אודיו חיצוני</span>
+        <span class="pill">איזון שירה AI במכשיר</span>
+        <span class="pill">שליחה ל־WhatsApp</span>
+      </div>
+      <div class="kicker"><span class="dot"></span> מופעל על ידי יהודה הרשנבוים</div>
+    </div>
+
+    <div class="grid">
+      <div class="card"><h3>סנכרון</h3><p>התאמת וידאו נבחר להקלטה חיצונית ארוכה, בלי לחפש ידנית את המקום המתאים לאורך כל ההקלטה.</p></div>
+      <div class="card"><h3>עיבוד סאונד</h3><p>תצוגה מקדימה ועיבוד של הסאונד, כולל הפרדת שירה ומוזיקה במכשיר כאשר בוחרים להשתמש בתכונה.</p></div>
+      <div class="card"><h3>שליחה</h3><p>ייצוא MP4 סופי, שמירה לתמונות, שיתוף דרך iOS או שליחה באמצעות שירות ה־WhatsApp של Status Edit.</p></div>
+    </div>
+
+    <h2 class="section-title">מדיניות פרטיות</h2>
+    <div class="card">
+      <h2>תקציר</h2>
+      <p class="muted">עודכן לאחרונה: 6 בספטמבר 2026</p>
+      <p>רוב עבודת העריכה מתבצעת במכשיר. Status Edit אינה דורשת חשבון משתמש ואינה כוללת פרסומות או ערכות Analytics. שימוש ברשת מתבצע כאשר מחברים WhatsApp או משתמשים במפורש בתכונת השליחה ל־WhatsApp.</p>
+    </div>
+
+    <div class="card">
+      <h2>עיבוד מדיה</h2>
+      <p>עריכת וידאו ואודיו, סנכרון, תצוגות מקדימות, קבצים זמניים מקומיים והפרדת שירה באמצעות AI מתבצעים במכשיר. מודל הפרדת השירה כלול ב־Status Edit, והמדיה שמנותחת לצורך ההפרדה אינה נשלחת לספק אחסון מודלים.</p>
+      <div class="notice"><strong>שינוי חשוב:</strong> אם תבחר במפורש <em>„שלח ל־WhatsApp”</em>, קובץ ה־MP4 הסופי יועלה לתשתית השליחה של Status Edit כדי לאפשר את מסירתו דרך WhatsApp. זהו תהליך העבודה הרגיל היחיד שבו קובץ המדיה הסופי מועלה בכוונה לתשתית שרת של Status Edit.</div>
+    </div>
+
+    <div class="card">
+      <h2>חיבור ושליחה ל־WhatsApp</h2>
+      <p>לצורך חיבור WhatsApp, Status Edit יוצרת מזהה התקנה ייחודי למכשיר ומקבלת אסימון מכשיר מהשרת של Status Edit. כאשר נשלחת הודעת CONNECT החד־פעמית מ־WhatsApp, השרת מקשר בין האסימון לבין מספר ה־WhatsApp שממנו נשלחה ההודעה.</p>
+      <p>לצורך שליחה, קובץ ה־MP4 הסופי מועלה דרך שרת Status Edit ואחסון האובייקטים שלו, ולאחר מכן נשלח באמצעות Twilio ו־WhatsApp Business Platform. Cloudflare משמשת לאירוח/אחסון תשתית השרת, Twilio להעברת ההודעה, ו־Meta/WhatsApp מפעילה את פלטפורמת WhatsApp.</p>
+      <p>שירותים אלה עשויים לעבד מידע הדרוש לביצוע השליחה, לרבות מספר WhatsApp, מטא־דאטה של הודעה ומסירה, המדיה או כתובת המדיה הנדרשת למסירה, מידע רשת/IP ולוגים טכניים של בקשות.</p>
+    </div>
+
+    <div class="card">
+      <h2>איזה מידע Status Edit שומרת</h2>
+      <p>Status Edit אינה מנהלת חשבון משתמש רגיל. כדי לשמור על חיבור WhatsApp פעיל, השרת עשוי לשמור אסימון מכשיר, את מספר ה־WhatsApp המקושר, זמני חיבור ותזמון של הודעה נכנסת אחרונה הדרוש לכללי השליחה של WhatsApp.</p>
+      <p>קובצי MP4 שמועלים לצורך שליחה ל־WhatsApp מיועדים להיות קובצי מסירה זמניים. הם עשויים להישאר באחסון השרת עד למחיקה לפי כללי שמירה אוטומטיים או ניקוי מנהלי. הם אינם מועלים לצורכי פרסום, פרופיילינג או אימון AI.</p>
+    </div>
+
+    <div class="card">
+      <h2>תמונות, קבצים ואחסון מקומי</h2>
+      <p>האפליקציה ניגשת רק לתמונות/סרטונים או לקבצי האודיו שאתה בוחר, בהתאם להרשאות iOS. לפי בקשתך, Status Edit יכולה לשמור את הייצוא הסופי בספריית התמונות. האפליקציה עשויה ליצור קבצים זמניים מקומיים בזמן ייבוא, תצוגה מקדימה, הפרדת אודיו, סנכרון או ייצוא.</p>
+    </div>
+
+    <div class="card">
+      <h2>איסוף מידע ושימוש בו</h2>
+      <p>Status Edit אינה כוללת פרסומות או ערכות Analytics, ואינה מוכרת בכוונה מידע אישי או משתמשת במדיה אישית לצורך פרסום ממוקד או מעקב. מידע בצד השרת משמש לחיבור, מסירה, אמינות, מניעת שימוש לרעה ופתרון תקלות תפעולי של התכונות שבהן בחרת להשתמש.</p>
+    </div>
+
+    <div class="card">
+      <h2>שירותי צד שלישי</h2>
+      <ul>
+        <li><strong>Cloudflare</strong> — הפעלת השרת ואחסון זמני/אחסון אובייקטים עבור מערכת השליחה ל־WhatsApp.</li>
+        <li><strong>Twilio</strong> — תשתית להעברת הודעות WhatsApp ולמסירתן.</li>
+        <li><strong>Meta / WhatsApp</strong> — WhatsApp Business Platform ושירות ההודעות למשתמש.</li>
+        <li><strong>Apple / תפריט השיתוף של iOS</strong> — אם תשתף ידנית לאפליקציה או שירות אחר, מדיניות הפרטיות של אותו יעד תחול לאחר שתבחר לשתף.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>הבחירות שלך ומחיקה</h2>
+      <p>ניתן לשלוט בהרשאת Photos דרך הגדרות iOS ולהפסיק בכל עת להשתמש בתכונת השליחה ל־WhatsApp. קבצים שנשמרו בתמונות או ששותפו ליעד אחר מנוהלים דרך אותו יעד. נתוני חיבור WhatsApp ומדיה זמנית למסירה מטופלים בהתאם למדיניות השמירה והתפעול של שרת Status Edit.</p>
+    </div>
+
+    <div class="card">
+      <h2>פרטי העסק</h2>
+      <p><strong>Status Edit</strong> מופעלת על ידי <strong>יהודה הרשנבוים</strong>.</p>
+      <p>אתר רשמי: <a href="https://status-edit-privacy.github.io/status-edit-privacy/">status-edit-privacy.github.io/status-edit-privacy/</a></p>
+      <p>מספר WhatsApp רשמי: <strong>+1 812-408-8949</strong></p>
+    </div>
+
+    <h2 class="section-title">רישיונות קוד פתוח ומודלים</h2>
+    <div class="card">
+      <h2>MDX23C InstVoc HQ (Core ML)</h2>
+      <p>מודל להפרדת שירה וכלי נגינה במכשיר.</p>
+      <p>קרדיטים: ארכיטקטורת ומשקולות MDX23C — ‏ZFTurbo; ארכיטקטורת TFC-TDF / MDX — ‏KUIELab ותורמים; Ultimate Vocal Remover ‏(UVR) — ‏Anjok07 ותורמי UVR; המרת/אריזת Core ML — ‏NubeAudio / huggingsounds.</p>
+      <p>חבילת Core ML מופצת תחת רישיון MIT. פרויקט UVR מבקש ממפתחי צד שלישי המשתמשים במודלים שלו לכבד את רישיון MIT ולתת קרדיט ל־UVR ולמפתחים שלו.</p>
+      <details>
+        <summary>MIT License</summary>
+        <p class="muted" dir="ltr">Copyright (c) 2022 Ultimate Vocal Remover</p>
+        <p dir="ltr">Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+        <p dir="ltr">The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+        <p dir="ltr">THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+      </details>
+    </div>
+
+    <div class="card"><h2>שינויים</h2><p>מדיניות זו עשויה להתעדכן אם התכונות, תשתית השליחה, שירותי צד שלישי או אופן הטיפול במידע של Status Edit ישתנו.</p></div>
+  </section>
+
+  <footer>© 2026 Yehuda Hershenbaum. All rights reserved.</footer>
+</div>
+</body>
+</html>
