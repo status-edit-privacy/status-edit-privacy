@@ -70,9 +70,14 @@ function setLang(l){
   document.getElementById('he').hidden=l!=='he';
   document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
   document.documentElement.lang=l;
-  localStorage.setItem('statusEditLang',l);
+  try { localStorage.setItem('statusEditLang',l); } catch (_) {}
 }
-window.addEventListener('DOMContentLoaded',()=>setLang(localStorage.getItem('statusEditLang')||'en'));
+window.addEventListener('DOMContentLoaded',()=>{
+  let saved='en'; try { saved=localStorage.getItem('statusEditLang')||'en'; } catch (_) {}
+  const lang=location.hash.endsWith('-he')?'he':location.hash.endsWith('-en')?'en':saved;
+  setLang(lang==='he'?'he':'en');
+  if(location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
+});
 </script>
 </head>
 <body>
@@ -113,11 +118,12 @@ window.addEventListener('DOMContentLoaded',()=>setLang(localStorage.getItem('sta
       <div class="card"><h3>Send</h3><p>Export the final MP4, save it to Photos, use the iOS Share Sheet, or send it through the Status Edit WhatsApp delivery service.</p></div>
     </div>
 
-    <h2 class="section-title">Privacy Policy</h2>
+    <p><a href="#support-en">Support and deletion requests</a></p>
+    <h2 class="section-title" id="privacy-en">Privacy Policy</h2>
     <div class="card">
       <h2>Summary</h2>
-      <p class="muted">Last updated: September 6, 2026</p>
-      <p>Most editing work happens on your device. Status Edit does not require a user account and does not include advertising or analytics SDKs. Network processing is used when you explicitly connect or use the WhatsApp delivery feature.</p>
+      <p class="muted">Last updated: September 21, 2026</p>
+      <p>Most editing work happens on your device. Status Edit does not require a user account and does not include advertising or analytics SDKs. Network processing is used when you connect WhatsApp, send a video, or submit a support request. Uploading a video for WhatsApp delivery requires your in-app consent.</p>
     </div>
 
     <div class="card">
@@ -136,7 +142,7 @@ window.addEventListener('DOMContentLoaded',()=>setLang(localStorage.getItem('sta
     <div class="card">
       <h2>What Status Edit stores</h2>
       <p>Status Edit does not maintain a traditional user account. To keep a WhatsApp connection working, the backend may store a device token, the linked WhatsApp phone number, connection timestamps, and recent inbound-message timing needed for WhatsApp delivery rules.</p>
-      <p>Finished MP4 files uploaded for WhatsApp delivery are intended as temporary delivery files. They may remain in server-side object storage until removed by automated retention rules or administrative cleanup. They are not uploaded for advertising, profiling, or AI training.</p>
+      <p>Finished MP4 files uploaded for WhatsApp delivery are temporary delivery media. Status Edit is configured to delete ordinary user MP4 files after a terminal delivery status, with a fallback cleanup configured for approximately 24 hours after upload. Delivery metadata may be retained briefly for delivery status and troubleshooting. Files already delivered to WhatsApp are controlled by WhatsApp and the recipient. Media is not uploaded for advertising, profiling, or AI training.</p>
     </div>
 
     <div class="card">
@@ -161,14 +167,24 @@ window.addEventListener('DOMContentLoaded',()=>setLang(localStorage.getItem('sta
 
     <div class="card">
       <h2>Your choices and deletion</h2>
-      <p>You control Photos access through iOS Settings and can stop using the WhatsApp delivery feature at any time. Files saved to Photos or shared to another destination are managed through those destinations. WhatsApp connection data and temporary delivery media are handled under the Status Edit backend retention and operational policies.</p>
+      <p>You control Photos access through iOS Settings. In Status Edit, open Settings to disconnect WhatsApp and delete the server connection record, phone-to-device link and pending pairing codes. This does not delete your local edits, files saved to Photos or messages already delivered to WhatsApp. Delivery metadata expires separately. For other deletion requests, use the support form described below.</p>
     </div>
 
     <div class="card">
       <h2>Business information</h2>
       <p><strong>Status Edit</strong> is operated by <strong>Yehuda Hershenbaum</strong>.</p>
       <p>Official website: <a href="https://status-edit-privacy.github.io/status-edit-privacy/">status-edit-privacy.github.io/status-edit-privacy/</a></p>
-      <p>Official WhatsApp sender: <strong>+1 812-408-8949</strong></p>
+      <p>Planned production WhatsApp sender: <strong>+1 812-408-8949</strong> — activation is pending Meta verification. The current beta uses the Twilio Sandbox through the join/connect buttons in the app. This number is not the current support contact.</p>
+    </div>
+
+    <h2 class="section-title" id="support-en">Support</h2>
+    <div class="card">
+      <h2>Contact Status Edit</h2>
+      <p>Open Status Edit, tap the settings gear beside the app logo, and open Support. Enter your WhatsApp number with country code and describe the issue. Replies are sent via WhatsApp.</p>
+      <p>You can also use this form to request deletion of support messages or other personal data. If you cannot open the app, beta testers can use Send Beta Feedback in TestFlight.</p>
+      <h3>Support request privacy</h3>
+      <p>With your consent, the form sends your callback WhatsApp number, message and app version through Cloudflare to our support mailbox using Google's Gmail service. We use this information to answer and follow up on your request, not for advertising. Messages may remain in the support mailbox while handling the request and follow-up; you can request their deletion through the same form.</p>
+      <p class="muted">Please do not include passwords, verification codes or unrelated sensitive information.</p>
     </div>
 
     <h2 class="section-title">Open Source & Model Licenses</h2>
@@ -209,11 +225,12 @@ window.addEventListener('DOMContentLoaded',()=>setLang(localStorage.getItem('sta
       <div class="card"><h3>שליחה</h3><p>ייצוא MP4 סופי, שמירה לתמונות, שיתוף דרך iOS או שליחה באמצעות שירות ה־WhatsApp של Status Edit.</p></div>
     </div>
 
-    <h2 class="section-title">מדיניות פרטיות</h2>
+    <p><a href="#support-he">תמיכה ובקשות מחיקה</a></p>
+    <h2 class="section-title" id="privacy-he">מדיניות פרטיות</h2>
     <div class="card">
       <h2>תקציר</h2>
-      <p class="muted">עודכן לאחרונה: 6 בספטמבר 2026</p>
-      <p>רוב עבודת העריכה מתבצעת במכשיר. Status Edit אינה דורשת חשבון משתמש ואינה כוללת פרסומות או ערכות Analytics. שימוש ברשת מתבצע כאשר מחברים WhatsApp או משתמשים במפורש בתכונת השליחה ל־WhatsApp.</p>
+      <p class="muted">עודכן לאחרונה: 21 בספטמבר 2026</p>
+      <p>רוב עבודת העריכה מתבצעת במכשיר. Status Edit אינה דורשת חשבון משתמש ואינה כוללת פרסומות או ערכות Analytics. שימוש ברשת מתבצע כאשר מחברים WhatsApp, שולחים סרטון או שולחים פנייה לתמיכה. העלאת סרטון לצורך שליחה ל־WhatsApp מחייבת הסכמה בתוך האפליקציה.</p>
     </div>
 
     <div class="card">
@@ -232,7 +249,7 @@ window.addEventListener('DOMContentLoaded',()=>setLang(localStorage.getItem('sta
     <div class="card">
       <h2>איזה מידע Status Edit שומרת</h2>
       <p>Status Edit אינה מנהלת חשבון משתמש רגיל. כדי לשמור על חיבור WhatsApp פעיל, השרת עשוי לשמור אסימון מכשיר, את מספר ה־WhatsApp המקושר, זמני חיבור ותזמון של הודעה נכנסת אחרונה הדרוש לכללי השליחה של WhatsApp.</p>
-      <p>קובצי MP4 שמועלים לצורך שליחה ל־WhatsApp מיועדים להיות קובצי מסירה זמניים. הם עשויים להישאר באחסון השרת עד למחיקה לפי כללי שמירה אוטומטיים או ניקוי מנהלי. הם אינם מועלים לצורכי פרסום, פרופיילינג או אימון AI.</p>
+      <p>קובצי MP4 שמועלים לצורך שליחה ל־WhatsApp הם קובצי מסירה זמניים. Status Edit מוגדרת למחוק קובצי MP4 רגילים של משתמשים לאחר סטטוס מסירה סופי, עם מנגנון ניקוי גיבוי המוגדר לכ־24 שעות לאחר ההעלאה. פרטי מסירה עשויים להישמר לזמן קצר לצורך מעקב ופתרון תקלות. קבצים שכבר נמסרו ל־WhatsApp מנוהלים בידי WhatsApp והנמען. המדיה אינה מועלת לצורכי פרסום, פרופיילינג או אימון AI.</p>
     </div>
 
     <div class="card">
@@ -257,14 +274,24 @@ window.addEventListener('DOMContentLoaded',()=>setLang(localStorage.getItem('sta
 
     <div class="card">
       <h2>הבחירות שלך ומחיקה</h2>
-      <p>ניתן לשלוט בהרשאת Photos דרך הגדרות iOS ולהפסיק בכל עת להשתמש בתכונת השליחה ל־WhatsApp. קבצים שנשמרו בתמונות או ששותפו ליעד אחר מנוהלים דרך אותו יעד. נתוני חיבור WhatsApp ומדיה זמנית למסירה מטופלים בהתאם למדיניות השמירה והתפעול של שרת Status Edit.</p>
+      <p>ניתן לשלוט בהרשאת Photos בהגדרות iOS. בהגדרות Status Edit אפשר לנתק את WhatsApp ולמחוק את רשומת החיבור בשרת, את הקישור בין המספר למכשיר ואת קודי החיבור הממתינים. הפעולה אינה מוחקת עריכות מקומיות, קבצים שנשמרו בתמונות או הודעות שכבר נמסרו ל־WhatsApp. פרטי המסירה נמחקים בנפרד לפי מדיניות השמירה. לבקשות מחיקה נוספות ניתן לפנות דרך טופס התמיכה המתואר בהמשך.</p>
     </div>
 
     <div class="card">
       <h2>פרטי העסק</h2>
       <p><strong>Status Edit</strong> מופעלת על ידי <strong>יהודה הרשנבוים</strong>.</p>
       <p>אתר רשמי: <a href="https://status-edit-privacy.github.io/status-edit-privacy/">status-edit-privacy.github.io/status-edit-privacy/</a></p>
-      <p>מספר WhatsApp רשמי: <strong>+1 812-408-8949</strong></p>
+      <p>מספר WhatsApp המיועד להפעלה בהמשך: <strong dir="ltr">+1 812-408-8949</strong> — ההפעלה ממתינה לאימות של Meta. בגרסת הבטא משתמשים במספר הניסוי של Twilio באמצעות כפתורי ההצטרפות והחיבור באפליקציה. המספר הזה אינו כתובת התמיכה הפעילה.</p>
+    </div>
+
+    <h2 class="section-title" id="support-he">תמיכה</h2>
+    <div class="card">
+      <h2>פנייה ל־Status Edit</h2>
+      <p>פתחו את Status Edit, לחצו על גלגל השיניים ליד לוגו האפליקציה ופתחו את אזור התמיכה. הזינו מספר WhatsApp עם קידומת מדינה ותארו את הבעיה. התשובה תינתן דרך WhatsApp.</p>
+      <p>אפשר להשתמש באותו טופס גם לבקשת מחיקת פניות תמיכה או מידע אישי נוסף. אם לא ניתן לפתוח את האפליקציה, בודקי הבטא יכולים לפנות דרך ״שליחת משוב על גרסת בטא״ ב־TestFlight.</p>
+      <h3>פרטיות פניות התמיכה</h3>
+      <p>בהסכמתכם, הטופס מעביר את מספר ה־WhatsApp למענה, תוכן הפנייה וגרסת האפליקציה דרך Cloudflare לתיבת התמיכה שלנו באמצעות שירות Gmail של Google. המידע משמש לטיפול בפנייה ובמעקב אחריה, ולא לפרסום. הפניות עשויות להישמר בתיבת התמיכה במהלך הטיפול והמעקב; אפשר לבקש למחוק אותן דרך אותו טופס.</p>
+      <p class="muted">אין לצרף סיסמאות, קודי אימות או מידע רגיש שאינו נדרש לטיפול בפנייה.</p>
     </div>
 
     <h2 class="section-title">רישיונות קוד פתוח ומודלים</h2>
